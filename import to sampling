@@ -54,6 +54,9 @@ data[data.url.isin(['https://www.google.co.jp/','https://hub.docker.com/'])]
 
 data.sort('url')  #SORT
 
+data.xxxx.value_counts().sort_index()  #frequency count for histgram
+(xxxx : column name)
+
 pd.concat([data,data_to_add],axis=0) #CONCATENATE =rbind. Axis=0で縦方向,axis=1は横方向の結合を指定
 
 #SAMPLING
