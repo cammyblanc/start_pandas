@@ -27,6 +27,17 @@ df_sample.describe() # 平均、分散、4分位など. Rでいうところのsu
 df_sample.head(10) #先頭10行を確認
 df_sample.tail(10) #先頭10行を確認
 
+len(dt)
+print(len(dt))
+print(len(dt[dt.mealscore==0])+len(dt[dt.mealscore==1])
+
+#強制的にObjectを数値へ変更（Depricatedかも）
+dt.mealscore=dt.mealscore.convert_objects(convert_numeric=True)
+
+#数値部分だけに絞って最大値
+max(dt.mealscore[dt["mealscore"]>=0])
+
+
 print(data['url'])
 data["url"]
 data.url
