@@ -1,0 +1,19 @@
+import pandas as pd
+import glob
+import os
+
+os.chdir(r"C:\Users\atsushi.kamitani\Documents\_data-temp\付与漏れデータ（キャンペーン別）\3")
+
+ls0 = pd.Series(glob.glob("*.xlsx"))
+ls2 = sorted(list(set(ls0)))
+
+db = pd.DataFrame(columns=[])
+for i in range(0,len(ls2)):
+    print(len(d), ls2[i])
+    d =pd.read_excel(ls2[i])
+    db=db.append(d)
+
+db.to_csv("check.csv", index=False, encoding='cp932')
+
+dbf=db.groupby('easyid')['付与ポイント'].sum()
+dbf.to_csv("sum.csv", header=True, encoding='cp932')
