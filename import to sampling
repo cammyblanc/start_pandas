@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np #for random sampling
 
+df.apply(pd.to_numeric, errors='ignore')
+
 
 #file import / export
 data = pd.read_csv('results.tsv', sep='\t', names=('id','unixtime','url')) #import
@@ -22,6 +24,9 @@ df_sample.info() #カラム名とその型の一覧
 
 # 各列の基礎統計量の確認
 df_sample.describe() # 平均、分散、4分位など. Rでいうところのsummary()
+
+pd.crosstab(d0.Q7_1,d0.Q18, margins=True, normalize='columns')
+
 
 # head / tail
 df_sample.head(10) #先頭10行を確認
