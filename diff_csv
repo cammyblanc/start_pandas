@@ -1,0 +1,22 @@
+# import files and extract differences
+
+import pandas as pd
+import glob
+import os
+
+os.chdir(r"C:\Users\atsushi.kamitani\Documents\Python")
+
+ls0 = pd.Series(glob.glob("*.csv"))
+ls1 = ls0.str.extract('(^TRVDEX-[0-9]+)(_[0-9])(\.csv)', expand=True)
+ls2   = sorted(list(set(ls1[0])))
+
+for i in range(0,len(ls2)):
+    csv1 = ls2[i]+"_1.csv"
+    csv2 = ls2[i]+"_2.csv"
+    df1 = pd.read_csv(csv1, header=None)
+    df2 = pd.read_csv(csv2, header=None)
+    df1.columns = ['id1', 'key1']
+    df2.columns = ['id2', 'key2']
+    print(csv1, csv2)
+    df=pd.merge(df2, df1, how='left', left_on='id2', right_on='id1')
+    df[['id2', 'key2']][df.id1!=df.id2].to_csv(ls2[i]+".csv", index = False)
