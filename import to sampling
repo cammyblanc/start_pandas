@@ -64,6 +64,9 @@ data.iloc[1:3,:]
 data[data.url=='https://hub.docker.com/']
 data[data.id==13]
 
+df1 = df[(df.a != -1) & (df.b != -1)]
+df2 = df[(df.a != -1) | (df.b != -1)]
+
 data[data.id.isin([1,2,3,4])]
 data[data.url.isin(['https://www.google.co.jp/','https://hub.docker.com/'])]
 #data.query("url=='https://www.google.co.jp/'|url=='https://hub.docker.com/'")
