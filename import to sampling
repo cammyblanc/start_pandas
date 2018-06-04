@@ -18,11 +18,16 @@ data.index     #インデックス名を取得
 # データフレーム全体のカラム名を上書き
 data.columns = ["day_no","class","point1","point2"]   
 
-# 但し個別のカラム名変更であればrenameが必要
-d0 = d0.rename(columns={'Q19_c': 'age_range'})
-
 # インデックス名を上書きする
 data.index   = [11,12,13,14,15,16]   
+
+# 但し個別のカラム名変更であればrenameが必要
+d0 = d0.rename(columns={'Q19_c': 'age_range'})
+df_new_multi = df.rename(columns={'A': 'a', 'C': 'c'})
+
+# 行名・列名のいずれかだけを変更したい場合は、引数indexとcolumnsのどちらか一方だけを指定すればよい。
+df_new = df.rename(columns={'A': 'a'}, index={'ONE': 'one'})
+
 
 len(df_sample) # 行数の確認
 df_sample.shape #次元数の確認:（行数、列数）の形で返す
