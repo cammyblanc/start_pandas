@@ -65,6 +65,8 @@ data[:3]
 
 data.ix[1:5,'url'] # .ixは.loc/.ilocと互換性あり
 
+d0.loc[d0.QSC4_1 <= 2, ['Q19','age_range']]
+
 data.loc[:,['id','url']]
 data.loc[13:16,['id','url']]
 data.loc[13:16,:]
