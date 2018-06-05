@@ -1,0 +1,9 @@
+# initial setting
+import matplotlib.pyplot as plt
+%matplotlib inline
+
+
+
+
+import scipy.stats as stats
+stats.probplot(d0['Q19'][d0['QSC4_ld'] == 1], plot= plt)
