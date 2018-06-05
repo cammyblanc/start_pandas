@@ -1,0 +1,34 @@
+import pandas as pd
+import scipy.stats as stats
+import matplotlib.pyplot as plt
+%matplotlib inline
+
+# overall stat
+d0['Q19'].groupby(d0['age_range']).describe()
+
+# shapiro normality:  not violated when p-values are greater than 0.05
+stats.shapiro(d0['Q19'][d0['Q4S'] == 1])
+# (0.97431480884552, 1.0097420677368518e-09)
+# Kolmogorov-Smirnov test: 
+stats.kstest(d0['Q19'][d0['Q4S'] == 1], 'norm')
+# KstestResult(statistic=1.0, pvalue=0.0)
+
+# Q-Q plot: The values should be on the red line, if a value is not on the line then it is indicative that there is a deviation from normality.
+stats.probplot(d0['Q19'][d0['Q4S'] == 1], plot= plt)
+
+# Levene’s test of homogeneity of variance is non-significant which indicates that the groups have equal variances
+stats.levene(d0['Q19'][d0['Q4S'] == 1], 
+             d0['Q19'][d0['Q4S'] == 2], 
+             d0['Q19'][d0['Q4S'] == 3], 
+             d0['Q19'][d0['Q4S'] == 4], 
+             d0['Q19'][d0['Q4S'] == 5] )
+# LeveneResult(statistic=1.9829558166813357, pvalue=0.09453567216645489)
+
+# one-way anova
+stats.f_oneway(d0['Q19'][d0['Q4S'] == 1], 
+               d0['Q19'][d0['Q4S'] == 2],
+               d0['Q19'][d0['Q4S'] == 3],
+               d0['Q19'][d0['Q4S'] == 4],
+               d0['Q19'][d0['Q4S'] == 5])
+# F_onewayResult(statistic=2.437104349825432, pvalue=0.04522638019400029)
+
