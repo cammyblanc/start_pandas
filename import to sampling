@@ -53,6 +53,11 @@ dt.mealscore=dt.mealscore.convert_objects(convert_numeric=True)
 #数値部分だけに絞って最大値
 max(dt.mealscore[dt["mealscore"]>=0])
 
+df.sum(axis=1)
+df.max(axis=1)
+df.min(axis=1)
+df.mean(axis=1)
+
 
 print(data['url'])
 data["url"]
