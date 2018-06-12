@@ -50,8 +50,8 @@ df.mean(axis=1)
 
 max(dt.mealscore[dt["mealscore"]>=0]) # 数値部分だけに絞って最大値
 
-# データ結合
-data_f = pd.concat([data1,data2,data3,data4,data5,data6,data7,data8,data9,data10,data11,data12,data13],axis=0) # axis=1
+# データ結合 -- axis=0で縦方向,axis=1は横方向の結合を指定
+data_f = pd.concat([data1,data2,data3,data4,data5,data6,data7,data8,data9,data10,data11,data12,data13],axis=0) 
 
 # unique
 data_f = data_f.easyid.drop_duplicates()
