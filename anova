@@ -50,8 +50,9 @@ tukey = pairwise_tukeyhsd(endog =d1_reg1_score['LIKE'],     # Data
                           groups=d1_reg1_score['brand'],   # Groups
                           alpha=0.05)          # Significance level
 
-tukey.plot_simultaneous()      # Plot group confidence intervals
-plt.vlines(x=49.57,ymin=-0.5,ymax=4.5, color="red")
+tukey.plot_simultaneous()                           # Plot group confidence intervals
+plt.vlines(x=49.57,ymin=-0.5,ymax=4.5, color="red") # visualize inline
+plt.savefig('d1_reg2_satis.png')                    # save file in the current dir
 
 tukey.summary()              # See test summary
 
