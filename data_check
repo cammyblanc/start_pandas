@@ -1,0 +1,51 @@
+import pandas as pd
+
+# file import / export
+data = pd.read_csv('results.tsv', sep='\t', names=('id','unixtime','url')) #import
+data.to_csv("path_of_exported_file") #export
+
+#強制的にObjectを数値へ変更（Depricatedかも）
+df.apply(pd.to_numeric, errors='ignore') 
+dt.mealscore=dt.mealscore.convert_objects(convert_numeric=True)
+
+
+# check data
+data.columns   #列名を取得
+data.index     #インデックス名を取得
+len(df_sample) # 行数の確認
+df_sample.shape #次元数の確認:（行数、列数）の形で返す
+df_sample.info() #カラム名とその型の一覧
+
+df_sample.head(10) #先頭10行を確認
+df_sample.tail(10) #先頭10行を確認
+
+len(dt)
+len(dt[dt.mealscore==0])
+print(len(dt[dt.mealscore==0])+len(dt[dt.mealscore==1]))
+
+
+# データフレーム全体のカラム名を上書き
+data.columns = ["day_no","class","point1","point2"]   
+
+# インデックス名を上書きする
+data.index   = [11,12,13,14,15,16]   
+
+# 但し個別のカラム名変更であればrenameが必要
+d0 = d0.rename(columns={'Q19_c': 'age_range'})
+df_new_multi = df.rename(columns={'A': 'a', 'C': 'c'})
+
+# 行名・列名のいずれかだけを変更したい場合は、引数indexとcolumnsのどちらか一方だけを指定すればよい。
+df_new = df.rename(columns={'A': 'a'}, index={'ONE': 'one'})
+
+
+# 各列の基礎統計量の確認
+df_sample.describe() # 平均、分散、4分位など. Rでいうところのsummary()
+
+pd.crosstab(d0.Q7_1,d0.Q18, margins=True, normalize='columns')
+
+df.sum(axis=1)
+df.max(axis=1)
+df.min(axis=1)
+df.mean(axis=1)
+
+max(dt.mealscore[dt["mealscore"]>=0]) # 数値部分だけに絞って最大値
