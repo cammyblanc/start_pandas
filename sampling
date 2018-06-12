@@ -1,0 +1,15 @@
+import pandas as pd
+import numpy as np
+from sklearn.cross_validation import train_test_split
+
+smp = 4600000
+
+# data import, sampling and split
+data = pd.read_table('ichiba.txt', encoding='Shift_JIS', sep='\t', header=0) #import
+sampler = np.random.permutation(len(data))
+data = data.take(sampler[:smp])
+ichi1, ichi2 = train_test_split(data, test_size=0.5)
+
+#data export
+ichi1.to_csv("ichi1.txt", index=False)
+ichi2.to_csv("ichi2.txt", index=False)
