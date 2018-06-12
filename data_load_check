@@ -2,7 +2,7 @@ import pandas as pd
 
 # file import / export
 data = pd.read_csv('results.tsv', sep='\t', names=('id','unixtime','url')) #import
-data.to_csv("path_of_exported_file") #export
+data.to_csv("path_of_exported_file", index=False) #export
 
 #強制的にObjectを数値へ変更（Depricatedかも）
 df.apply(pd.to_numeric, errors='ignore') 
@@ -49,3 +49,9 @@ df.min(axis=1)
 df.mean(axis=1)
 
 max(dt.mealscore[dt["mealscore"]>=0]) # 数値部分だけに絞って最大値
+
+# データ結合
+data_f = pd.concat([data1,data2,data3,data4,data5,data6,data7,data8,data9,data10,data11,data12,data13],axis=0) # axis=1
+
+# unique
+data_f = data_f.easyid.drop_duplicates()
