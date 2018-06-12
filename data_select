@@ -1,0 +1,34 @@
+# カラム指定
+print(data['url'])
+data["url"]
+data.url
+data[['id','url']]
+
+# 行指定
+data[1:5]
+data[-2:]
+data[:3]
+
+data.ix[1:5,'url'] # .ixは.loc/.ilocと互換性あり
+
+# 行・列指定
+d1.loc[d1.use == 1,['brand','LIKE','SATIS']]
+d0.loc[d0.QSC4_1 <= 2, ['Q19','age_range']]
+
+data.loc[:,['id','url']]
+data.loc[13:16,['id','url']]
+data.loc[13:16,:]
+
+data.iloc[[1,2,4],[0,2]]
+data.iloc[1:3,:]
+
+data[data.url=='https://hub.docker.com/']
+data[data.id==13]
+
+# 複数条件指定
+df1 = df[(df.a != -1) & (df.b != -1)]
+df2 = df[(df.a != -1) | (df.b != -1)]
+
+data[data.id.isin([1,2,3,4])]
+data[data.url.isin(['https://www.google.co.jp/','https://hub.docker.com/'])]
+data.query("url=='https://www.google.co.jp/'|url=='https://hub.docker.com/'")
