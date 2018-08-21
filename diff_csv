@@ -20,3 +20,9 @@ for i in range(0,len(ls2)):
     print(csv1, csv2)
     df=pd.merge(df2, df1, how='left', left_on='id2', right_on='id1')
     df[['id2', 'key2']][df.id1!=df.id2].to_csv(ls2[i]+".csv", index = False)
+
+#/* extract diff */#
+
+    df=df.fillna(0)
+    df["diff"]=df.key2 - df.key1
+    df[['id2', 'diff']][(df.id1!=df.id2) | (df.key2 > df.key1)].to_csv(ls2[i]+".csv", index = False)
